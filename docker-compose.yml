@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+    md-to-qase:
+        build:
+            context: .
+            dockerfile: infra/docker/services/python_service/Dockerfile
+        network_mode: host
+        ports:
+          - "3000:3000"
