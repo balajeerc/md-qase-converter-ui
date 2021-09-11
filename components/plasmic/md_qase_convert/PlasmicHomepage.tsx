@@ -59,7 +59,7 @@ export type PlasmicHomepage__OverridesType = {
   suiteHeaderInput?: p.Flex<"input">;
   markdownInputTextArea?: p.Flex<"textarea">;
   qaseOutputTextArea?: p.Flex<"textarea">;
-  downloadQaseJson?: p.Flex<"button">;
+  downloadButton?: p.Flex<"button">;
 };
 
 export interface DefaultHomepageProps {
@@ -185,12 +185,12 @@ function PlasmicHomepage__RenderFunc(props: {
 
           <div className={classNames(defaultcss.all, sty.freeBox__lEw5)}>
             <button
-              data-plasmic-name={"downloadQaseJson"}
-              data-plasmic-override={overrides.downloadQaseJson}
+              data-plasmic-name={"downloadButton"}
+              data-plasmic-override={overrides.downloadButton}
               className={classNames(
                 defaultcss.button,
                 defaultcss.__wab_text,
-                sty.downloadQaseJson
+                sty.downloadButton
               )}
             >
               {"Download Qase JSON\n"}
@@ -211,7 +211,7 @@ const PlasmicDescendants = {
     "suiteHeaderInput",
     "markdownInputTextArea",
     "qaseOutputTextArea",
-    "downloadQaseJson"
+    "downloadButton"
   ],
   appIcon: ["appIcon"],
   converterHeader: ["converterHeader"],
@@ -219,7 +219,7 @@ const PlasmicDescendants = {
   suiteHeaderInput: ["suiteHeaderInput"],
   markdownInputTextArea: ["markdownInputTextArea"],
   qaseOutputTextArea: ["qaseOutputTextArea"],
-  downloadQaseJson: ["downloadQaseJson"]
+  downloadButton: ["downloadButton"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -232,7 +232,7 @@ type NodeDefaultElementType = {
   suiteHeaderInput: "input";
   markdownInputTextArea: "textarea";
   qaseOutputTextArea: "textarea";
-  downloadQaseJson: "button";
+  downloadButton: "button";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -302,7 +302,7 @@ export const PlasmicHomepage = Object.assign(
     suiteHeaderInput: makeNodeComponent("suiteHeaderInput"),
     markdownInputTextArea: makeNodeComponent("markdownInputTextArea"),
     qaseOutputTextArea: makeNodeComponent("qaseOutputTextArea"),
-    downloadQaseJson: makeNodeComponent("downloadQaseJson"),
+    downloadButton: makeNodeComponent("downloadButton"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

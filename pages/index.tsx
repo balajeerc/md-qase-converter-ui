@@ -4,24 +4,86 @@ import * as React from "react";
 import { ScreenVariantProvider } from "../components/plasmic/md_qase_convert/PlasmicGlobalVariant__Screen";
 import { PlasmicHomepage } from "../components/plasmic/md_qase_convert/PlasmicHomepage";
 
+function exportTestCaseFile(filename, jsonToWrite) {
+    const blob = new Blob([jsonToWrite], { type: "text/json" });
+    const link = document.createElement("a");
+
+    link.download = filename;
+    link.href = window.URL.createObjectURL(blob);
+    link.dataset.downloadurl = ["text/json", link.download, link.href].join(
+        ":"
+    );
+
+    const evt = new MouseEvent("click", {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+    });
+
+    link.dispatchEvent(evt);
+    link.remove();
+}
+
+let wasm;
 function Homepage() {
-  // Use PlasmicHomepage to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicHomepage are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, PlasmicHomepage is wrapped by your project's global
-  // variant context providers. These wrappers may be moved to
-  // Next.js Custom App component
-  // (https://nextjs.org/docs/advanced-features/custom-app).
-  return <PlasmicHomepage />;
+    React.useEffect(() => {
+        async function init() {
+            try {
+                wasm = await import("../rust/pkg");
+            } catch (err) {
+                console.error("Error loading wasm");
+            }
+        }
+        init();
+    }, []);
+
+    const [suiteHeader, setSuiteHeader] = React.useState("My Testcase Suite");
+    const [markdownText, setMarkdownText] = React.useState("");
+    const [jsonQaseText, setJsonQaseText] = React.useState("");
+    return (
+        <PlasmicHomepage
+            suiteHeaderInput={{
+                onChange: (e) => {
+                    setSuiteHeader(e.target.value);
+                    if (jsonQaseText.length > 0) {
+                        setJsonQaseText(
+                            wasm.web_convert_markdown_to_qase(
+                                suiteHeader,
+                                markdownText
+                            )
+                        );
+                    }
+                },
+                value: suiteHeader,
+            }}
+            markdownInputTextArea={{
+                onChange: (e) => {
+                    setMarkdownText(e.target.value);
+                    if (e.target.value.length > 0) {
+                        setJsonQaseText(
+                            wasm.web_convert_markdown_to_qase(
+                                suiteHeader,
+                                e.target.value
+                            )
+                        );
+                    } else {
+                        setJsonQaseText("");
+                    }
+                },
+                value: markdownText,
+            }}
+            qaseOutputTextArea={{
+                value: jsonQaseText,
+                readOnly: true,
+            }}
+            downloadButton={{
+                onClick: () => {
+                    exportTestCaseFile(`${suiteHeader}.json`, jsonQaseText);
+                },
+                disabled: jsonQaseText.length === 0,
+            }}
+        />
+    );
 }
 
 export default Homepage;
