@@ -40,6 +40,7 @@ COPY rust rust
 COPY pages pages
 RUN mkdir -p /usr/src/app/rust/pkg
 
+RUN (cd /usr/src/app/rust && wasm-pack build)
 RUN npm run build
 
 CMD ["npm", "run", "start"]
