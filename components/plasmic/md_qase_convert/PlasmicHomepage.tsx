@@ -34,6 +34,8 @@ import {
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
 
+import { useScreenVariants } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: olgiJM424T/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 import * as defaultcss from "../plasmic__default_style.module.css"; // plasmic-import: global/defaultcss
 import * as projectcss from "./plasmic_md_qase_convert.module.css"; // plasmic-import: sDj2ruLAFhmZZDvF4NRj4P/projectcss
@@ -59,6 +61,7 @@ export type PlasmicHomepage__OverridesType = {
   suiteHeaderInput?: p.Flex<"input">;
   markdownInputTextArea?: p.Flex<"textarea">;
   qaseOutputTextArea?: p.Flex<"textarea">;
+  downloadButtonMobile?: p.Flex<"button">;
   downloadButton?: p.Flex<"button">;
 };
 
@@ -74,6 +77,10 @@ function PlasmicHomepage__RenderFunc(props: {
   forNode?: string;
 }) {
   const { variants, args, overrides, forNode, dataFetches } = props;
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariants()
+  });
 
   return (
     <React.Fragment>
@@ -94,109 +101,122 @@ function PlasmicHomepage__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={defaultcss.plasmic_page_wrapper}>
-        <div
-          data-plasmic-name={"root"}
-          data-plasmic-override={overrides.root}
-          data-plasmic-root={true}
-          data-plasmic-for-node={forNode}
-          className={classNames(
-            defaultcss.all,
-            projectcss.root_reset,
-            sty.root
-          )}
-        >
-          <div className={classNames(defaultcss.all, sty.freeBox___5YWv)}>
-            <IconIcon
-              data-plasmic-name={"appIcon"}
-              data-plasmic-override={overrides.appIcon}
-              className={classNames(defaultcss.all, sty.appIcon)}
-              role={"img"}
-            />
+      <div
+        data-plasmic-name={"root"}
+        data-plasmic-override={overrides.root}
+        data-plasmic-root={true}
+        data-plasmic-for-node={forNode}
+        className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
+      >
+        <div className={classNames(defaultcss.all, sty.freeBox___5YWv)}>
+          <IconIcon
+            data-plasmic-name={"appIcon"}
+            data-plasmic-override={overrides.appIcon}
+            className={classNames(defaultcss.all, sty.appIcon)}
+            role={"img"}
+          />
 
-            <div
-              data-plasmic-name={"converterHeader"}
-              data-plasmic-override={overrides.converterHeader}
-              className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
-                sty.converterHeader
-              )}
-            >
-              <span className={"plasmic_default__all plasmic_default__span"}>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
-                >
-                  {"Converter"}
-                </span>
+          <div
+            data-plasmic-name={"converterHeader"}
+            data-plasmic-override={overrides.converterHeader}
+            className={classNames(
+              defaultcss.all,
+              defaultcss.__wab_text,
+              sty.converterHeader
+            )}
+          >
+            <span className={"plasmic_default__all plasmic_default__span"}>
+              <span
+                className={"plasmic_default__all plasmic_default__span"}
+                style={{ fontWeight: 700 }}
+              >
+                {"Converter"}
               </span>
-            </div>
+            </span>
+          </div>
+        </div>
+
+        <div className={classNames(defaultcss.all, sty.freeBox___4HM)}>
+          <div
+            data-plasmic-name={"suiteHeaderLabel"}
+            data-plasmic-override={overrides.suiteHeaderLabel}
+            className={classNames(
+              defaultcss.all,
+              defaultcss.__wab_text,
+              sty.suiteHeaderLabel
+            )}
+          >
+            {"Suite Header"}
           </div>
 
-          <div className={classNames(defaultcss.all, sty.freeBox___4HM)}>
-            <div
-              data-plasmic-name={"suiteHeaderLabel"}
-              data-plasmic-override={overrides.suiteHeaderLabel}
-              className={classNames(
-                defaultcss.all,
-                defaultcss.__wab_text,
-                sty.suiteHeaderLabel
-              )}
-            >
-              {"Suite Header"}
-            </div>
+          <input
+            data-plasmic-name={"suiteHeaderInput"}
+            data-plasmic-override={overrides.suiteHeaderInput}
+            className={classNames(defaultcss.input, sty.suiteHeaderInput)}
+            placeholder={"Header suite name" as const}
+            size={1 as const}
+            type={"text" as const}
+            value={"My test cases" as const}
+          />
+        </div>
 
-            <input
-              data-plasmic-name={"suiteHeaderInput"}
-              data-plasmic-override={overrides.suiteHeaderInput}
-              className={classNames(defaultcss.input, sty.suiteHeaderInput)}
-              placeholder={"Header suite name" as const}
-              size={1 as const}
-              type={"text" as const}
-              value={"My test cases" as const}
-            />
-          </div>
+        <div className={classNames(defaultcss.all, sty.freeBox__kv7Nu)}>
+          <textarea
+            data-plasmic-name={"markdownInputTextArea"}
+            data-plasmic-override={overrides.markdownInputTextArea}
+            className={classNames(
+              defaultcss.textarea,
+              sty.markdownInputTextArea
+            )}
+            placeholder={"Enter Markdown Testcases Here" as const}
+            value={"" as const}
+          />
 
-          <div className={classNames(defaultcss.all, sty.freeBox__kv7Nu)}>
-            <textarea
-              data-plasmic-name={"markdownInputTextArea"}
-              data-plasmic-override={overrides.markdownInputTextArea}
-              className={classNames(
-                defaultcss.textarea,
-                sty.markdownInputTextArea
-              )}
-              placeholder={"Enter Markdown Testcases Here" as const}
-              value={"" as const}
-            />
+          <textarea
+            data-plasmic-name={"qaseOutputTextArea"}
+            data-plasmic-override={overrides.qaseOutputTextArea}
+            className={classNames(defaultcss.textarea, sty.qaseOutputTextArea)}
+            disabled={true}
+            placeholder={"Qase JSON Appears Here" as const}
+            value={"" as const}
+          />
 
-            <textarea
-              data-plasmic-name={"qaseOutputTextArea"}
-              data-plasmic-override={overrides.qaseOutputTextArea}
-              className={classNames(
-                defaultcss.textarea,
-                sty.qaseOutputTextArea
-              )}
-              disabled={true}
-              placeholder={"Qase JSON Appears Here" as const}
-              value={"" as const}
-            />
-          </div>
-
-          <div className={classNames(defaultcss.all, sty.freeBox__lEw5)}>
+          {(
+            hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
+          ) ? (
             <button
-              data-plasmic-name={"downloadButton"}
-              data-plasmic-override={overrides.downloadButton}
+              data-plasmic-name={"downloadButtonMobile"}
+              data-plasmic-override={overrides.downloadButtonMobile}
               className={classNames(
                 defaultcss.button,
                 defaultcss.__wab_text,
-                sty.downloadButton
+                sty.downloadButtonMobile
               )}
             >
-              {"Download Qase JSON\n"}
+              {"Download JSON"}
             </button>
-          </div>
+          ) : null}
         </div>
+
+        {(hasVariant(globalVariants, "screen", "mobileOnly") ? true : true) ? (
+          <div className={classNames(defaultcss.all, sty.freeBox__lEw5)}>
+            {(
+              hasVariant(globalVariants, "screen", "mobileOnly") ? true : true
+            ) ? (
+              <button
+                data-plasmic-name={"downloadButton"}
+                data-plasmic-override={overrides.downloadButton}
+                className={classNames(
+                  defaultcss.button,
+                  defaultcss.__wab_text,
+                  sty.downloadButton
+                )}
+              >
+                {"Download Qase JSON\n"}
+              </button>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -211,6 +231,7 @@ const PlasmicDescendants = {
     "suiteHeaderInput",
     "markdownInputTextArea",
     "qaseOutputTextArea",
+    "downloadButtonMobile",
     "downloadButton"
   ],
   appIcon: ["appIcon"],
@@ -219,6 +240,7 @@ const PlasmicDescendants = {
   suiteHeaderInput: ["suiteHeaderInput"],
   markdownInputTextArea: ["markdownInputTextArea"],
   qaseOutputTextArea: ["qaseOutputTextArea"],
+  downloadButtonMobile: ["downloadButtonMobile"],
   downloadButton: ["downloadButton"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -232,6 +254,7 @@ type NodeDefaultElementType = {
   suiteHeaderInput: "input";
   markdownInputTextArea: "textarea";
   qaseOutputTextArea: "textarea";
+  downloadButtonMobile: "button";
   downloadButton: "button";
 };
 
@@ -302,6 +325,7 @@ export const PlasmicHomepage = Object.assign(
     suiteHeaderInput: makeNodeComponent("suiteHeaderInput"),
     markdownInputTextArea: makeNodeComponent("markdownInputTextArea"),
     qaseOutputTextArea: makeNodeComponent("qaseOutputTextArea"),
+    downloadButtonMobile: makeNodeComponent("downloadButtonMobile"),
     downloadButton: makeNodeComponent("downloadButton"),
 
     // Metadata about props expected for PlasmicHomepage
