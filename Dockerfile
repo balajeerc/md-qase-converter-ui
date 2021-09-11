@@ -38,9 +38,9 @@ COPY next.config.js next.config.js
 COPY components components
 COPY rust rust
 COPY pages pages
+RUN mkdir -p /usr/src/app/rust/pkg
 
 RUN npm run build
-
 
 CMD ["npm", "run", "start"]
 
