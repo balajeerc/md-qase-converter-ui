@@ -1,25 +1,56 @@
-This is a Next.js project bootstrapped with [`create-plasmic-app`](https://www.npmjs.com/package/create-plasmic-app).
+# Markdown to Qase Converter
+
+Repository containing code for site: https://mdtoqase.eejalab.xyz/
+
+This is a browser-only tool to convert test cases written in Markdown format to [Qase](https://qase.io/) tool's JSON format.
+
+## Overview
+
+- [Core converter logic](https://github.com/balajeerc/md-qase-converter-ui/tree/main/rust) is written in Rust and used on the page via WASM
+- The UI for the page is created using [plasmic](https://www.plasmic.app/)
+- [NextJS](https://nextjs.org/) framework forms the base boilerplate on which this app is built
 
 ## Getting Started
 
-First, run the development server:
+### Pre-requisites
+
+__Rust Toolchain__
+
+You need the following installed:
+
+- [rustup](https://rustup.rs/)
+  - This will in turn install `rustc` and `cargo`
+- [wasm-pack](https://rustwasm.github.io/wasm-pack/)
+
+__NodeJS__
+
+You need a rather recent version of NodeJS. Recommended: v14.17.6 LTS. (Use [nvm](https://github.com/nvm-sh/nvm) to install it). 
+
+__Plasmic Editor Access__
+
+Plasmic let me create this UI without having to write any CSS myself (I suck at it).
+Please ping me if you need access to the [plasmic project](https://studio.plasmic.app/projects/sDj2ruLAFhmZZDvF4NRj4P) that this was made from.
+
+### Running Development Server
 
 ```bash
-yarn dev
+npm install
+npm run dev
 ```
 
-Open your browser to see the result.
+### Updating Plasmic UI Edits
 
-You can start editing your project in Plasmic Studio. The page auto-updates as you edit the project.
+You need to install [plasmic-cli](https://docs.plasmic.app/learn/cli/) to do this.
+Changes made in Plasmic can be transmitted to code here using one of the following facilities that `plasmic-cli` gives:
 
-## Learn More
+- For one time updates:
 
-With Plasmic, you can enable non-developers on your team to publish pages and content into your website or app.
+  ```
+  plasmic sync
+  ```
 
-To learn more about Plasmic, take a look at the following resources:
+- For realtime updates during development
 
-- [Plasmic Website](https://www.plasmic.app/)
-- [Plasmic Documentation](https://docs.plasmic.app/learn/)
-- [Plasmic Slack Community](https://www.plasmic.app/slack)
-
-You can check out [the Plasmic GitHub repository](https://github.com/plasmicapp/plasmic) - your feedback and contributions are welcome!
+  ```
+  plasmic watch
+  ```
