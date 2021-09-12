@@ -55,10 +55,10 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
   root?: p.Flex<"div">;
-  suiteHeaderLabel?: p.Flex<"div">;
-  suiteHeaderInput?: p.Flex<"input">;
   appIcon?: p.Flex<"svg">;
   converterHeader?: p.Flex<"div">;
+  suiteHeaderLabel?: p.Flex<"div">;
+  suiteHeaderInput?: p.Flex<"input">;
   markdownInputTextArea?: p.Flex<"textarea">;
   qaseOutputTextArea?: p.Flex<"textarea">;
   downloadButtonMobile?: p.Flex<"button">;
@@ -108,30 +108,6 @@ function PlasmicHomepage__RenderFunc(props: {
         data-plasmic-for-node={forNode}
         className={classNames(defaultcss.all, projectcss.root_reset, sty.root)}
       >
-        <div className={classNames(defaultcss.all, sty.freeBox___4HM)}>
-          <div
-            data-plasmic-name={"suiteHeaderLabel"}
-            data-plasmic-override={overrides.suiteHeaderLabel}
-            className={classNames(
-              defaultcss.all,
-              defaultcss.__wab_text,
-              sty.suiteHeaderLabel
-            )}
-          >
-            {"Suite Header"}
-          </div>
-
-          <input
-            data-plasmic-name={"suiteHeaderInput"}
-            data-plasmic-override={overrides.suiteHeaderInput}
-            className={classNames(defaultcss.input, sty.suiteHeaderInput)}
-            placeholder={"Header suite name" as const}
-            size={1 as const}
-            type={"text" as const}
-            value={"My test cases" as const}
-          />
-        </div>
-
         <div className={classNames(defaultcss.all, sty.freeBox___5YWv)}>
           <IconIcon
             data-plasmic-name={"appIcon"}
@@ -158,6 +134,30 @@ function PlasmicHomepage__RenderFunc(props: {
               </span>
             </span>
           </div>
+        </div>
+
+        <div className={classNames(defaultcss.all, sty.freeBox___4HM)}>
+          <div
+            data-plasmic-name={"suiteHeaderLabel"}
+            data-plasmic-override={overrides.suiteHeaderLabel}
+            className={classNames(
+              defaultcss.all,
+              defaultcss.__wab_text,
+              sty.suiteHeaderLabel
+            )}
+          >
+            {"Suite Header"}
+          </div>
+
+          <input
+            data-plasmic-name={"suiteHeaderInput"}
+            data-plasmic-override={overrides.suiteHeaderInput}
+            className={classNames(defaultcss.input, sty.suiteHeaderInput)}
+            placeholder={"Header suite name" as const}
+            size={1 as const}
+            type={"text" as const}
+            value={"My test cases" as const}
+          />
         </div>
 
         <div className={classNames(defaultcss.all, sty.freeBox__kv7Nu)}>
@@ -225,19 +225,19 @@ function PlasmicHomepage__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "suiteHeaderLabel",
-    "suiteHeaderInput",
     "appIcon",
     "converterHeader",
+    "suiteHeaderLabel",
+    "suiteHeaderInput",
     "markdownInputTextArea",
     "qaseOutputTextArea",
     "downloadButtonMobile",
     "downloadButton"
   ],
-  suiteHeaderLabel: ["suiteHeaderLabel"],
-  suiteHeaderInput: ["suiteHeaderInput"],
   appIcon: ["appIcon"],
   converterHeader: ["converterHeader"],
+  suiteHeaderLabel: ["suiteHeaderLabel"],
+  suiteHeaderInput: ["suiteHeaderInput"],
   markdownInputTextArea: ["markdownInputTextArea"],
   qaseOutputTextArea: ["qaseOutputTextArea"],
   downloadButtonMobile: ["downloadButtonMobile"],
@@ -248,10 +248,10 @@ type DescendantsType<T extends NodeNameType> =
   typeof PlasmicDescendants[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  suiteHeaderLabel: "div";
-  suiteHeaderInput: "input";
   appIcon: "svg";
   converterHeader: "div";
+  suiteHeaderLabel: "div";
+  suiteHeaderInput: "input";
   markdownInputTextArea: "textarea";
   qaseOutputTextArea: "textarea";
   downloadButtonMobile: "button";
@@ -319,10 +319,10 @@ export const PlasmicHomepage = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    suiteHeaderLabel: makeNodeComponent("suiteHeaderLabel"),
-    suiteHeaderInput: makeNodeComponent("suiteHeaderInput"),
     appIcon: makeNodeComponent("appIcon"),
     converterHeader: makeNodeComponent("converterHeader"),
+    suiteHeaderLabel: makeNodeComponent("suiteHeaderLabel"),
+    suiteHeaderInput: makeNodeComponent("suiteHeaderInput"),
     markdownInputTextArea: makeNodeComponent("markdownInputTextArea"),
     qaseOutputTextArea: makeNodeComponent("qaseOutputTextArea"),
     downloadButtonMobile: makeNodeComponent("downloadButtonMobile"),

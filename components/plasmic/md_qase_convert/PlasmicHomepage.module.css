@@ -7,30 +7,14 @@
   overflow: auto;
   min-width: 0;
 }
-.freeBox___4HM {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-}
-.suiteHeaderLabel {
-  position: relative;
-  font-weight: 700;
-  padding: 16px;
-}
-.suiteHeaderInput {
-  position: relative;
-  width: 180px;
-  flex-shrink: 0;
-  padding: 8px;
-}
 .freeBox___5YWv {
   display: flex;
   position: relative;
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-start;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .appIcon {
   position: relative;
@@ -49,6 +33,33 @@
   align-self: flex-start;
   padding: 29px 6px;
 }
+.freeBox___4HM {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___4HM {
+    margin: 5px 5%;
+  }
+}
+.suiteHeaderLabel {
+  position: relative;
+  font-weight: 700;
+  padding: 16px;
+}
+.suiteHeaderInput {
+  position: relative;
+  width: 180px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  flex-shrink: 0;
+  padding: 8px;
+}
 .freeBox__kv7Nu {
   display: flex;
   position: relative;
@@ -56,6 +67,8 @@
   align-items: stretch;
   justify-content: flex-start;
   height: 540px;
+  margin-left: 5%;
+  margin-right: 5%;
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -123,6 +136,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__lEw5 {
