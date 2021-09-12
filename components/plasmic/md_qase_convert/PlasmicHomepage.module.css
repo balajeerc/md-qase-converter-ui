@@ -20,14 +20,14 @@
   position: relative;
   object-fit: cover;
   color: #000;
-  width: 178px;
-  height: 107px;
+  width: 147px;
+  height: 88px;
   margin-left: 16px;
   flex-shrink: 0;
 }
 .converterHeader {
   position: relative;
-  font-size: 32px;
+  font-size: 24px;
   font-family: "Public Sans", sans-serif;
   color: #240606eb;
   align-self: flex-start;
