@@ -82,6 +82,12 @@ function Homepage() {
                 },
                 disabled: jsonQaseText.length === 0,
             }}
+            downloadButtonMobile={{
+                onClick: () => {
+                    exportTestCaseFile(`${suiteHeader}.json`, jsonQaseText);
+                },
+                disabled: jsonQaseText.length === 0,
+            }}
         />
     );
 }
