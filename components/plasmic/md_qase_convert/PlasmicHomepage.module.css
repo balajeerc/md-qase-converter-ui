@@ -57,8 +57,14 @@
   width: 180px;
   margin-top: 5px;
   margin-bottom: 5px;
+  background: #ffffff;
   flex-shrink: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .suiteHeaderInput {
+    background: #ffffff;
+  }
 }
 .freeBox__kv7Nu {
   display: flex;
@@ -86,6 +92,8 @@
   height: 500px;
   margin-top: 24px;
   margin-right: 8px;
+  background: #ffffff;
+  color: #535353;
   min-width: 0;
   padding: 16px;
 }

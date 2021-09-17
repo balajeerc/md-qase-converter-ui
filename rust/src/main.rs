@@ -12,7 +12,7 @@ fn convert_md_file_to_qase(markdown_file: &Path) {
     let markdown_text = fs::read_to_string(markdown_file.to_str().unwrap())
         .expect("file error loading markdown_file");
     let markdown_str = &markdown_text.to_string();
-    let result = convert::convert_md_to_qase(markdown_str).unwrap();
+    let result = convert::convert_md_to_qase("root_suite", markdown_str).unwrap();
     let json = serde_json::to_string(&result).unwrap();
     println!("{}", json);
 }

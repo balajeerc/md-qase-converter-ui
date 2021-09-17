@@ -33,6 +33,14 @@ Please ping me if you need access to the [plasmic project](https://studio.plasmi
 
 ### Running Development Server
 
+First build the Rust WASM
+
+```
+(cd rust && wasm-pack build)
+```
+
+Then run dev server:
+
 ```bash
 npm install
 npm run dev
@@ -43,13 +51,25 @@ npm run dev
 You need to install [plasmic-cli](https://docs.plasmic.app/learn/cli/) to do this.
 Changes made in Plasmic can be transmitted to code here using one of the following facilities that `plasmic-cli` gives:
 
+- Install plamsmic-cli using:
+
+  ```
+  npm install -g @plasmicapp/cli
+  ```
+
+- Auth to plasmic using:
+
+  ```
+  plasmic auth
+  ```
+
 - For one time updates:
 
   ```
   plasmic sync
   ```
 
-- For realtime updates during development
+- For realtime updates from Plasmic editor to local test env during development:
 
   ```
   plasmic watch
