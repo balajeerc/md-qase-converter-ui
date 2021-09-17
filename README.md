@@ -12,6 +12,16 @@ This is a browser-only tool to convert test cases written in Markdown format to 
 
 ## Getting Started
 
+### Quickstart with Docker
+
+You can run the app with Docker:
+
+```
+docker build -t md-qase-convert . && docker run -p 3000:3000 md-qase-convert
+```
+
+This should have the app running at `localhost:3000`
+
 ### Pre-requisites
 
 __Rust Toolchain__
