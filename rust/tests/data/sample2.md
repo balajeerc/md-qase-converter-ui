@@ -1,3 +1,55 @@
-- Simple test suite
-    - Test Subsuite 1
-        - Test case 1
+- [ ]  Verify that order-book displays correctly when clicking the 'Order Book' button
+    - [ ]  Verify that the order book matches the regular orders page
+- [ ]  Settings
+    - [ ]  Check that the lot size/quantity switcher works correctly for USDINR (i.e. should not multiply by 1000)
+    - [ ]  Verify hiding of depth and info works as necessary
+        - [ ]  In desktop, via combined toggle
+        - [ ]  In mobile, via independent toggle for each
+- [ ]  Update Prices
+    - [ ]  Find an instrument where LTP is different from bid and offer, and verify that
+        - [ ]  Update button resets price to lowest bid for buy legs
+        - [ ]  Update button resets price to highest offer for sell legs
+    - [ ]  Verify the global 'Update prices' button works on all instruments
+- [ ]  Market/Limit Toggle
+    - [ ]  When switching to market, all the prices should be set as 0
+    - [ ]  When switching from market to limit, the price should be set back to whatever was the last chosen price by user
+        - [ ]  This will be the price on load of basket page if update prices was never clicked after loading basket page
+        - [ ]  This will be whatever price was picked from bid/offer if update prices was clicked at any point after loading basket page
+- [ ]  Rearrange Mode
+    - [ ]  Initiating re-arrange mode
+        - [ ]  Should hide
+            - [ ]  Bid offer ladder
+            - [ ]  Place order buttons (both individual and global)
+            - [ ]  Top menu showing 'Limit/Market', 'Intraday/Overnight', Error warnings
+            - [ ]  Settings, Order book, Ticker
+        - [ ]  Should show
+            - [ ]  'Reset to default order' button
+            - [ ]  Buttons on each card with up down arrows to enable re-arranging
+            - [ ]  An indicator icon on each card hinting that the cards can be re-arranged
+    - [ ]  Cursor should switch to hand icon to hint drag-ability
+    - [ ]  Rearrange order interaction should feel smooth and pleasing
+    - [ ]  Margin needed
+        - [ ]  Should only be visible for brokers that support position based margins (currently, only Zerodha)
+        - [ ]  Should update dynamically based on the order of legs
+- [ ]  Verify that tool-tips for each of the following buttons shows correct info
+    - [ ]  Intraday / Overnight
+    - [ ]  Market/Limit
+    - [ ]  Update Prices
+- [ ]  Select slightly deep OTM call options on NIFTY or BANKNIFTY and verify that the block warning against blocked strike restrictions is visible
+- [ ]  Verify that rearrange button is not visible for brokers other than Zerodha
+- [ ]  Verify that rearrange button factors in existing position (NOTE: Only possible to test in production)
+- [ ]  Partial placement and rearrange
+    - [ ]  If 'Place Order' button is clicked on any order, disable 'rearrange' mode
+- [ ]  If multiple underlyings are present in basket order, don't show any underlying ticker
+- [ ]  When all orders in basket have market orders disabled on them from broker's side
+- [ ]  When all orders in basket have market orders enabled on broker side, but are 'restricted' from our side because they're outside permitted strike range
+    - [ ]  Verify that in this case, 'Place All Orders at Market' button is disabled by default
+    - [ ]  On Zerodha, verify we show 'Allow Market Orders in Sequence' checkbox
+    - [ ]  On clicking 'Allow Market Orders in Sequence' checkbox
+        - [ ]  Warning modal should show up indicating warning text
+        - [ ]  See example button should redirect to correct Sensibull doc showing 'When can I buy a blocked strike' info
+- [ ]  When there are a combination of instruments with market orders disabled from broker side, and instruments with market orders enabled from broker side
+    - [ ]  Test with a combination of underlyings from groups page
+- [ ]  For USDINR, ticker should not be visible (this is due to issues in resolving correct expiry)
+- [ ]  Verify that the 'Margin Available' number matches what we show on our Positions page
+    - [ ]  Also sanity check the number with available margin shown on KITE

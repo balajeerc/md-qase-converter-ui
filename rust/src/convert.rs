@@ -17,7 +17,7 @@ struct TextNode {
 fn first_pass(markdown_input: &str, parsed_texts: &mut Vec<TextNode>) {
     let mut options = Options::empty();
     options.insert(Options::ENABLE_TASKLISTS);
-    options.insert(Options::ENABLE_SMART_PUNCTUATION);
+    // options.insert(Options::ENABLE_SMART_PUNCTUATION);
     let mut nesting_level = 0;
     let event_iterator = Parser::new_ext(markdown_input, options);
     for event in event_iterator {
